@@ -17,6 +17,8 @@
 		150E76932AE037D3008FC657 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150E76902AE037D3008FC657 /* SceneDelegate.swift */; };
 		150E76942AE037D3008FC657 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150E76912AE037D3008FC657 /* AppDelegate.swift */; };
 		150E76952AE037D3008FC657 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150E76922AE037D3008FC657 /* LocationManager.swift */; };
+		1577360A2B28CD31009A45BF /* Extenstions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157736092B28CD31009A45BF /* Extenstions.swift */; };
+		1577360C2B28CD3D009A45BF /* AppTexts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1577360B2B28CD3D009A45BF /* AppTexts.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,8 @@
 		150E76912AE037D3008FC657 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		150E76922AE037D3008FC657 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		150E76962AE03885008FC657 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		157736092B28CD31009A45BF /* Extenstions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extenstions.swift; sourceTree = "<group>"; };
+		1577360B2B28CD3D009A45BF /* AppTexts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTexts.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +109,8 @@
 				150E76972AE03987008FC657 /* App Delegates */,
 				150E76982AE0399D008FC657 /* View Model */,
 				150E76662AE03725008FC657 /* location_picker_swiftuiApp.swift */,
+				157736092B28CD31009A45BF /* Extenstions.swift */,
+				1577360B2B28CD3D009A45BF /* AppTexts.swift */,
 				150E76682AE03725008FC657 /* ContentView.swift */,
 				150E766A2AE03727008FC657 /* Assets.xcassets */,
 				150E766C2AE03727008FC657 /* Preview Content */,
@@ -284,10 +290,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1577360C2B28CD3D009A45BF /* AppTexts.swift in Sources */,
 				150E76942AE037D3008FC657 /* AppDelegate.swift in Sources */,
 				150E76692AE03725008FC657 /* ContentView.swift in Sources */,
 				150E76952AE037D3008FC657 /* LocationManager.swift in Sources */,
 				150E76672AE03725008FC657 /* location_picker_swiftuiApp.swift in Sources */,
+				1577360A2B28CD31009A45BF /* Extenstions.swift in Sources */,
 				150E76932AE037D3008FC657 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

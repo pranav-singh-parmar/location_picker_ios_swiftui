@@ -6,18 +6,40 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct ContentView: View {
-    @StateObject var manager = LocationManager()
+    
+    @StateObject var locationManager = LocationManager()
+    
+    private let spacing: CGFloat = 10
+    private let padding: CGFloat = 16
     
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Location Picker App!")
+        switch locationManager.clAuthorizationStatus {
+        case .restricted, .denied:
+            VStack(spacing: spacing) {
+                Spacer()
+                
+                Text(AppTexts.grantContactAccessToViewCurrentLocationOnThisApp)
+                    .font(.title2)
+                    .multilineTextAlignment(.center)
+                
+                Button {
+                    locationManager.presentAppSettingsAlert()
+                } label: {
+                    Text(AppTexts.openSettings)
+                        .font(.system(.headline))
+                }
+                Spacer()
+            }.padding(padding)
+        case .authorized, .authorizedAlways, .authorizedWhenInUse:
+            Map(coordinateRegion: $locationManager.region,
+                showsUserLocation: true)
+                       .edgesIgnoringSafeArea(.all)
+        default:
+            EmptyView()
         }
-        .padding()
     }
 }
 
