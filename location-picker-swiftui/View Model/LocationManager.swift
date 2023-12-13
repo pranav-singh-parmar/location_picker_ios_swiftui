@@ -33,7 +33,9 @@ final class LocationManager: NSObject, ObservableObject {
     }
     
     private func setup() {
-        clAuthorizationStatus = locationManager.authorizationStatus
+        DispatchQueue.main.async {
+            self.clAuthorizationStatus = self.locationManager.authorizationStatus
+        }
         switch locationManager.authorizationStatus {
         case .authorizedAlways, .authorizedWhenInUse:
             print("in Location authorized")
@@ -71,12 +73,18 @@ final class LocationManager: NSObject, ObservableObject {
         
         alert.present()
     }
+    
+    func stopUpdatingLocation() {
+        locationManager.stopUpdatingLocation()
+    }
 }
 
 //MARK:- CLLocationManagerDelegate
 extension LocationManager: CLLocationManagerDelegate {
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        self.clAuthorizationStatus = manager.authorizationStatus
+        DispatchQueue.main.async {
+            self.clAuthorizationStatus = manager.authorizationStatus
+        }
         guard .authorizedAlways == manager.authorizationStatus else { return }
         //locationManager.requestLocation()
         locationManager.startUpdatingLocation()
@@ -88,15 +96,21 @@ extension LocationManager: CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        //locationManager.stopUpdatingLocation()
         let locValue = manager.location?.coordinate
         print("locations = \(locValue?.latitude ?? 0) \(locValue?.longitude ?? 0)")
 
-        locations.last.map {
-                region = MKCoordinateRegion(
+        DispatchQueue.main.async {
+//            self.region = MKCoordinateRegion(
+//                center: locValue ?? CLLocationCoordinate2D(),
+//                span: .init(latitudeDelta: 0.01, longitudeDelta: 0.01)
+//            )
+            locations.last.map {
+                self.region = MKCoordinateRegion(
                     center: $0.coordinate,
                     span: .init(latitudeDelta: 0.01, longitudeDelta: 0.01)
                 )
             }
+        }
     }
 }
+
